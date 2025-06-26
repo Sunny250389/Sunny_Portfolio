@@ -59,7 +59,7 @@ const Footer = () => {
               © {currentYear} Sunny Kumar. All rights reserved.
             </p>
             <p className="text-slate-300 flex items-center">
-              Made with <Heart className="w-4 h-4 text-red-500 mx-1" fill="currentColor" /> 
+              Made with <Heart className="w-4 h-4 text-red-500 mx-1" fill="currentColor" />
               using React & Tailwind CSS
             </p>
           </div>
