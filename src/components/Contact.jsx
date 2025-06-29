@@ -1,24 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
-
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6" />,
@@ -60,9 +43,7 @@ const Contact = () => {
           <h2 className="text-4xl font-bold text-slate-800 mb-4">Get In Touch</h2>
           <div className="w-24 h-1 bg-teal-600 mx-auto mb-8" />
           <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            I'm always interested in discussing new opportunities, collaborating on
-            innovative testing projects, or sharing insights about test automation and
-            ML model validation. Let's connect and explore how we can work together.
+            I'm always interested in discussing new opportunities or collaborating on creative testing and automation projects. Feel free to reach out.
           </p>
         </div>
 
@@ -103,10 +84,17 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact Form using FormSubmit */}
           <div>
             <h3 className="text-2xl font-bold text-slate-800 mb-8">Send Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form
+              action="https://formsubmit.co/sunny250389@gmail.com"
+              method="POST"
+              className="space-y-6"
+            >
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-slate-700 font-medium mb-2">
@@ -116,8 +104,6 @@ const Contact = () => {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
                     placeholder="Your full name"
@@ -131,8 +117,6 @@ const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
                     placeholder="your.email@example.com"
@@ -148,8 +132,6 @@ const Contact = () => {
                   type="text"
                   id="subject"
                   name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
                   required
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition"
                   placeholder="Subject of your message"
@@ -164,8 +146,6 @@ const Contact = () => {
                   id="message"
                   name="message"
                   rows="6"
-                  value={formData.message}
-                  onChange={handleChange}
                   required
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 resize-none transition"
                   placeholder="Your message here..."
