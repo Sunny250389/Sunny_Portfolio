@@ -92,8 +92,10 @@ const Contact = () => {
               method="POST"
               className="space-y-6"
             >
+              {/* Hidden Fields */}
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" value="https://sunny250389.github.io/Sunny_Portfolio/" />
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
