@@ -35,7 +35,7 @@ const Hero = () => {
               Get In Touch
             </a>
             <a
-              href="/resume.pdf"
+              href="/Sunny_Portfolio/public/Sunny_Automation_Resume.pdf"
               download
               className="flex items-center gap-2 border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-lg hover:border-teal-600 hover:text-teal-600 transition-all duration-200 transform hover:scale-105"
             >
