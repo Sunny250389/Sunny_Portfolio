@@ -49,6 +49,13 @@ const Header = () => {
                 {item.label}
               </button>
             ))}
+            {/* New Hobbies Tab */}
+            <a
+              href="/Sunny_Portfolio/hobbies"
+              className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium"
+            >
+              Hobbies
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -73,6 +80,13 @@ const Header = () => {
                   {item.label}
                 </button>
               ))}
+              {/* Hobbies Link for Mobile */}
+              <a
+                href="/Sunny_Portfolio/hobbies"
+                className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium text-left pl-4"
+              >
+                Hobbies
+              </a>
             </nav>
           </div>
         )}
