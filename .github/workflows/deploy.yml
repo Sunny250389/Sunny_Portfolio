@@ -23,6 +23,8 @@ jobs:
         run: npm ci
       - name: Build project
         run: npm run build
+      - name: Copy index.html to 404.html
+        run: cp dist/index.html dist/404.html
       - name: Upload build output
         uses: actions/upload-pages-artifact@v3
         with:
