@@ -72,7 +72,6 @@ const Education = () => {
             <GraduationCap className="w-8 h-8 text-teal-600 mr-3" />
             Academic Credentials
           </h3>
-          
           <div className="space-y-8">
             {education.map((edu, index) => (
               <div
@@ -81,12 +80,8 @@ const Education = () => {
               >
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
                   <div>
-                    <h4 className="text-2xl font-bold text-slate-800 mb-2">
-                      {edu.degree}
-                    </h4>
-                    <h5 className="text-xl text-teal-600 font-semibold mb-2">
-                      {edu.school}
-                    </h5>
+                    <h4 className="text-2xl font-bold text-slate-800 mb-2">{edu.degree}</h4>
+                    <h5 className="text-xl text-teal-600 font-semibold mb-2">{edu.school}</h5>
                     <p className="text-slate-600 mb-2">{edu.details}</p>
                   </div>
                   <div className="lg:text-right">
@@ -95,11 +90,8 @@ const Education = () => {
                     <div className="text-slate-800 font-semibold">{edu.grade}</div>
                   </div>
                 </div>
-
                 <div>
-                  <h6 className="text-lg font-semibold text-slate-800 mb-3">
-                    Key Highlights:
-                  </h6>
+                  <h6 className="text-lg font-semibold text-slate-800 mb-3">Key Highlights:</h6>
                   <ul className="space-y-2">
                     {edu.achievements.map((achievement, idx) => (
                       <li key={idx} className="flex items-start">
@@ -119,23 +111,16 @@ const Education = () => {
             <Award className="w-8 h-8 text-teal-600 mr-3" />
             Professional Certifications
           </h3>
-          
           <div className="grid md:grid-cols-2 gap-6">
             {certifications.map((cert, index) => (
               <div
                 key={index}
                 className="bg-slate-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-300"
               >
-                <h4 className="text-xl font-bold text-slate-800 mb-2">
-                  {cert.title}
-                </h4>
+                <h4 className="text-xl font-bold text-slate-800 mb-2">{cert.title}</h4>
                 <div className="flex justify-between items-center mb-3">
-                  <span className="text-teal-600 font-semibold">
-                    {cert.provider}
-                  </span>
-                  <span className="text-slate-600">
-                    {cert.year}
-                  </span>
+                  <span className="text-teal-600 font-semibold">{cert.provider}</span>
+                  <span className="text-slate-600">{cert.year}</span>
                 </div>
                 <p className="text-slate-600">{cert.description}</p>
               </div>
@@ -148,7 +133,6 @@ const Education = () => {
             <Book className="w-8 h-8 text-teal-600 mr-3" />
             Capstone Projects (PG Diploma Curriculum)
           </h3>
-          
           <div className="grid md:grid-cols-2 gap-4">
             {capstoneProjects.map((project, index) => (
               <div
@@ -169,12 +153,12 @@ const Education = () => {
             Continuous Learning & Training
           </h3>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed mb-4">
-            Beyond formal education, I actively engage in continuous learning and knowledge sharing. 
-            I have provided training sessions on NLP and Computer Vision to testing teams, staying 
+            Beyond formal education, I actively engage in continuous learning and knowledge sharing.
+            I have provided training sessions on NLP and Computer Vision to testing teams, staying
             current with the latest developments in AI/ML testing methodologies.
           </p>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            My commitment to professional development ensures I remain at the forefront of testing 
+            My commitment to professional development ensures I remain at the forefront of testing
             technologies and best practices in the rapidly evolving field of software quality assurance.
           </p>
         </div>

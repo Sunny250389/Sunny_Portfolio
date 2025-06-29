@@ -9,10 +9,11 @@
 //   },
 // });
 
+// vite.config.js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/<repo-name>/', // <- required for GitHub Pages
+  base: '/Sunny_Portfolio/',  // <-- Add this line
   plugins: [react()],
 });
