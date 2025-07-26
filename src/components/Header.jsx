@@ -51,7 +51,7 @@ const Header = () => {
             ))}
             {/* New Hobbies Tab */}
             <a
-              href="/Sunny_Portfolio/hobbies"
+              href="/hobbies"
               className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium"
             >
               Hobbies
@@ -82,7 +82,7 @@ const Header = () => {
               ))}
               {/* Hobbies Link for Mobile */}
               <a
-                href="/Sunny_Portfolio/hobbies"
+                href="/hobbies"
                 className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium text-left pl-4"
               >
                 Hobbies
