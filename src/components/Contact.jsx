@@ -6,8 +6,8 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       label: 'Email',
-      value: 'sunny250389@gmail.com',
-      href: 'mailto:sunny250389@gmail.com',
+      value: 'careerforsunny@gmail.com',
+      href: 'mailto:careerforsunny@gmail.com',
     },
     {
       icon: <Phone className="w-6 h-6" />,
@@ -27,12 +27,12 @@ const Contact = () => {
     {
       icon: <Linkedin className="w-6 h-6" />,
       label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/sunny-kumar-a2063b38',
+      href: 'https://www.linkedin.com/in/sunnykumar25',
     },
     {
       icon: <Github className="w-6 h-6" />,
       label: 'GitHub',
-      href: 'https://github.com/Sunny250389',
+      href: 'https://github.com/careerforsunny',
     },
   ];
 
@@ -88,14 +88,14 @@ const Contact = () => {
           <div>
             <h3 className="text-2xl font-bold text-slate-800 mb-8">Send Message</h3>
             <form
-              action="https://formsubmit.co/sunny250389@gmail.com"
+              action="https://formsubmit.co/careerforsunny@gmail.com"
               method="POST"
               className="space-y-6"
             >
               {/* Hidden Fields */}
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_next" value="https://sunny250389.github.io/Sunny_Portfolio/" />
+              <input type="hidden" name="_next" value="https://careerforsunny.github.io/Sunny_Portfolio/" />
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
