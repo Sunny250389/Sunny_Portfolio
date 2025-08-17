@@ -9,19 +9,21 @@
 //   </StrictMode>
 // );
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from './App';
-import Hobbies from './components/Hobbies';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import App from "./App";
+import Hobbies from "./components/Hobbies";
+import Blog from "./components/Blog"; // ✅ Import Blog
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter basename="/">
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/hobbies" element={<Hobbies />} />
+        <Route path="/blog" element={<Blog />} /> {/* ✅ New Blog Route */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom'; // ✅ Import Link for routing
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,14 +30,14 @@ const Header = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-    }`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className="text-2xl font-bold text-slate-800">
-            Sunny
-          </div>
+          <div className="text-2xl font-bold text-slate-800">Sunny</div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
@@ -49,13 +50,20 @@ const Header = () => {
                 {item.label}
               </button>
             ))}
-            {/* New Hobbies Tab */}
-            <a
-              href="/hobbies"
+            {/* Hobbies Tab */}
+            <Link
+              to="/hobbies"
               className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium"
             >
               Hobbies
-            </a>
+            </Link>
+            {/* Blog Tab */}
+            <Link
+              to="/blog"
+              className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium"
+            >
+              Blog
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -80,13 +88,20 @@ const Header = () => {
                   {item.label}
                 </button>
               ))}
-              {/* Hobbies Link for Mobile */}
-              <a
-                href="/hobbies"
+              {/* Hobbies Link */}
+              <Link
+                to="/hobbies"
                 className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium text-left pl-4"
               >
                 Hobbies
-              </a>
+              </Link>
+              {/* Blog Link */}
+              <Link
+                to="/blog"
+                className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium text-left pl-4"
+              >
+                Blog
+              </Link>
             </nav>
           </div>
         )}
