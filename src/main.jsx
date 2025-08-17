@@ -25,7 +25,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/hobbies" element={<Hobbies />} />
-        <Route path="/blog" element={<Blog />} /> {/* ✅ New Blog Route */}
+        <Route path="/blog" element={<Blog isOwner={true} />} /> {/* ✅ New Blog Route */}
         <Route path="/blogs" element={<BlogList />} /> {/* Blog List (all) */}
         <Route path="/blogs/:id" element={<BlogDetail />} /> {/* Blog Detail */}
       </Routes>
