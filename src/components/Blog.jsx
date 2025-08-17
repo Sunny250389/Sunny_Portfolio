@@ -1,30 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Home, X } from "lucide-react";
+import { Home } from "lucide-react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 const Blog = () => {
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
-  const [images, setImages] = useState([]);
-
-  // ✅ Handle multiple image uploads
-  const handleImageUpload = (e) => {
-    const files = Array.from(e.target.files);
-    files.forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setImages((prev) => [...prev, reader.result]);
-      };
-      reader.readAsDataURL(file);
-    });
-  };
-
-  // ✅ Remove selected image
-  const removeImage = (index) => {
-    setImages(images.filter((_, i) => i !== index));
-  };
 
   // ✅ Save draft
   const saveDraft = () => {
@@ -33,42 +15,27 @@ const Blog = () => {
       return;
     }
     const draftBlogs = JSON.parse(localStorage.getItem("drafts")) || [];
-    const newDraft = { title, details, images };
-
+    const newDraft = { title, details };
     draftBlogs.push(newDraft);
     localStorage.setItem("drafts", JSON.stringify(draftBlogs));
-
-    console.log("Drafts saved:", draftBlogs); // 🔎 Debug log
     alert("Draft saved!");
   };
 
-    // ✅ Publish blog
+  // ✅ Publish blog
   const publishBlog = () => {
     if (!title.trim()) {
       alert("Blog title is required before publishing!");
       return;
     }
     const publishedBlogs = JSON.parse(localStorage.getItem("published")) || [];
-    const newBlog = { title, details, images };
-
+    const newBlog = { title, details };
     publishedBlogs.push(newBlog);
     localStorage.setItem("published", JSON.stringify(publishedBlogs));
-
-    console.log("Published blogs:", publishedBlogs); // 🔎 Debug log
     alert("Blog published!");
 
-    // Reset form
+    // Reset
     setTitle("");
     setDetails("");
-    setImages([]);
-  };
-
-  // ✅ Delete published blog by title
-  const deleteBlog = (titleToDelete) => {
-    const publishedBlogs = JSON.parse(localStorage.getItem("published")) || [];
-    const updatedBlogs = publishedBlogs.filter((blog) => blog.title !== titleToDelete);
-    localStorage.setItem("published", JSON.stringify(updatedBlogs));
-    alert("Blog deleted!");
   };
 
   const modules = {
@@ -79,7 +46,6 @@ const Blog = () => {
       ["blockquote", "code-block"],
       [{ align: [] }],
       [{ color: [] }, { background: [] }],
-      ["link", "image"],
       ["clean"],
     ],
   };
@@ -97,8 +63,6 @@ const Blog = () => {
     "align",
     "color",
     "background",
-    "link",
-    "image",
   ];
 
   return (
@@ -116,7 +80,7 @@ const Blog = () => {
 
       <h2 className="text-4xl font-bold mb-6 text-slate-800">Write a Blog</h2>
 
-      {/* ✅ Title */}
+      {/* ✅ Blog Title */}
       <input
         type="text"
         placeholder="Enter blog title..."
@@ -137,56 +101,21 @@ const Blog = () => {
         className="mb-6 bg-white"
       />
 
-      {/* ✅ Multiple Image Upload */}
-      <div className="mb-6">
-        <input type="file" accept="image/*" multiple onChange={handleImageUpload} />
-        <div className="flex gap-4 flex-wrap mt-4">
-          {images.map((img, index) => (
-            <div key={index} className="relative">
-              <img src={img} alt="Blog" className="h-32 rounded shadow" />
-              <button
-                onClick={() => removeImage(index)}
-                className="absolute top-1 right-1 bg-red-600 text-white p-1 rounded-full"
-              >
-                <X size={16} />
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* ✅ Buttons */}
       <div className="flex gap-4">
         <button
-          type="button"  // ✅ Prevent form auto-submit
+          type="button"
           onClick={saveDraft}
           className="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600"
         >
           Save Draft
         </button>
         <button
-          type="button"  // ✅ Prevent form auto-submit
+          type="button"
           onClick={publishBlog}
           className="bg-teal-600 text-white px-6 py-2 rounded hover:bg-teal-700"
         >
           Publish
-        </button>
-      </div>
-
-      {/* ✅ Delete Blog Section */}
-      <div className="mt-10">
-        <h3 className="text-2xl font-bold mb-4">Delete a Blog</h3>
-        <button
-          onClick={() => {
-            if (!title.trim()) {
-              alert("Enter the title of the blog you want to delete!");
-              return;
-            }
-            deleteBlog(title);
-          }}
-          className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700"
-        >
-          Delete Blog by Title
         </button>
       </div>
     </div>
