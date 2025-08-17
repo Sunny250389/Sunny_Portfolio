@@ -2,12 +2,13 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
-  // 🔑 Toggle this to false when deploying, so only you see "Blog Editor"
+  // 🔑 Toggle this flag → true (when you want to edit), false (when deploying live)
   const isOwner = true;
 
   return (
     <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+
         {/* Logo / Name */}
         <Link to="/" className="text-2xl font-bold text-teal-600">
           Sunny Kumar
@@ -42,7 +43,7 @@ const Header = () => {
             Blogs
           </NavLink>
 
-          {/* Only visible for you (owner) */}
+          {/* Only for you (when isOwner = true) */}
           {isOwner && (
             <NavLink
               to="/blog"
