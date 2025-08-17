@@ -33,21 +33,31 @@ const Blog = () => {
       return;
     }
     const draftBlogs = JSON.parse(localStorage.getItem("drafts")) || [];
-    draftBlogs.push({ title, details, images });
+    const newDraft = { title, details, images };
+
+    draftBlogs.push(newDraft);
     localStorage.setItem("drafts", JSON.stringify(draftBlogs));
+
+    console.log("Drafts saved:", draftBlogs); // 🔎 Debug log
     alert("Draft saved!");
   };
 
-  // ✅ Publish blog
+    // ✅ Publish blog
   const publishBlog = () => {
     if (!title.trim()) {
       alert("Blog title is required before publishing!");
       return;
     }
     const publishedBlogs = JSON.parse(localStorage.getItem("published")) || [];
-    publishedBlogs.push({ title, details, images });
+    const newBlog = { title, details, images };
+
+    publishedBlogs.push(newBlog);
     localStorage.setItem("published", JSON.stringify(publishedBlogs));
+
+    console.log("Published blogs:", publishedBlogs); // 🔎 Debug log
     alert("Blog published!");
+
+    // Reset form
     setTitle("");
     setDetails("");
     setImages([]);
@@ -148,12 +158,14 @@ const Blog = () => {
       {/* ✅ Buttons */}
       <div className="flex gap-4">
         <button
+          type="button"  // ✅ Prevent form auto-submit
           onClick={saveDraft}
           className="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600"
         >
           Save Draft
         </button>
         <button
+          type="button"  // ✅ Prevent form auto-submit
           onClick={publishBlog}
           className="bg-teal-600 text-white px-6 py-2 rounded hover:bg-teal-700"
         >
