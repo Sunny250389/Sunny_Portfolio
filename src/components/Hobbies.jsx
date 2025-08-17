@@ -1,6 +1,7 @@
 import React from 'react';
-import { Music, BookOpen, Gamepad2, Flower, Brush } from 'lucide-react';
+import { Music, BookOpen, Gamepad2, Flower, Brush, Home } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const hobbies = [
   {
@@ -44,6 +45,18 @@ const Hobbies = () => {
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-20 px-6">
       <div className="max-w-5xl mx-auto text-center">
+
+        {/* ✅ Home Button */}
+        <div className="mb-6 text-left">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 bg-slate-800 text-white px-4 py-2 rounded-lg hover:bg-slate-700 transition"
+          >
+            <Home className="w-5 h-5" />
+            Home
+          </Link>
+        </div>
+
         <h1 className="text-4xl font-bold text-slate-800 mb-6">My Hobbies</h1>
         <p className="text-lg text-slate-600 mb-12">
           Outside of work, I explore creative and mindful hobbies that keep me inspired and energized.
