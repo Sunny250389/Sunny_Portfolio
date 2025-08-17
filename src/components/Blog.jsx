@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Home, Trash2 } from "lucide-react";
+import { Home, Trash2, Edit } from "lucide-react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -8,6 +8,7 @@ const Blog = () => {
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
   const [publishedBlogs, setPublishedBlogs] = useState([]);
+  const [editingIndex, setEditingIndex] = useState(null);
 
   // Load published blogs on page load
   useEffect(() => {
@@ -28,22 +29,27 @@ const Blog = () => {
     alert("Draft saved!");
   };
 
-  // Publish blog
+  // Publish blog (or update if editing)
   const publishBlog = () => {
     if (!title.trim()) {
       alert("Blog title is required before publishing!");
       return;
     }
-    const stored = JSON.parse(localStorage.getItem("published")) || [];
-    const newBlog = { title, details };
-    stored.push(newBlog);
+    let stored = JSON.parse(localStorage.getItem("published")) || [];
+    if (editingIndex !== null) {
+      stored[editingIndex] = { title, details };
+      alert("Blog updated!");
+    } else {
+      stored.push({ title, details });
+      alert("Blog published!");
+    }
     localStorage.setItem("published", JSON.stringify(stored));
-    setPublishedBlogs(stored); // update UI instantly
-    alert("Blog published!");
+    setPublishedBlogs(stored);
 
-    // Reset fields
+    // Reset
     setTitle("");
     setDetails("");
+    setEditingIndex(null);
   };
 
   // Delete blog
@@ -52,6 +58,14 @@ const Blog = () => {
     updated.splice(index, 1);
     setPublishedBlogs(updated);
     localStorage.setItem("published", JSON.stringify(updated));
+  };
+
+  // Edit blog
+  const editBlog = (index) => {
+    setTitle(publishedBlogs[index].title);
+    setDetails(publishedBlogs[index].details);
+    setEditingIndex(index);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const modules = {
@@ -94,7 +108,9 @@ const Blog = () => {
         </Link>
       </div>
 
-      <h2 className="text-4xl font-bold mb-6 text-slate-800">Write a Blog</h2>
+      <h2 className="text-4xl font-bold mb-6 text-slate-800">
+        {editingIndex !== null ? "Edit Blog" : "Write a Blog"}
+      </h2>
 
       {/* Blog Title */}
       <input
@@ -131,7 +147,7 @@ const Blog = () => {
           onClick={publishBlog}
           className="bg-teal-600 text-white px-6 py-2 rounded hover:bg-teal-700"
         >
-          Publish
+          {editingIndex !== null ? "Save Changes" : "Publish"}
         </button>
       </div>
 
@@ -147,13 +163,22 @@ const Blog = () => {
                 key={index}
                 className="p-6 bg-white rounded-lg shadow hover:shadow-lg transition relative"
               >
-                <button
-                  onClick={() => deleteBlog(index)}
-                  className="absolute top-4 right-4 text-red-500 hover:text-red-700"
-                  title="Delete Blog"
-                >
-                  <Trash2 className="w-5 h-5" />
-                </button>
+                <div className="absolute top-4 right-4 flex gap-3">
+                  <button
+                    onClick={() => editBlog(index)}
+                    className="text-blue-500 hover:text-blue-700"
+                    title="Edit Blog"
+                  >
+                    <Edit className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={() => deleteBlog(index)}
+                    className="text-red-500 hover:text-red-700"
+                    title="Delete Blog"
+                  >
+                    <Trash2 className="w-5 h-5" />
+                  </button>
+                </div>
                 <h3 className="text-2xl font-bold mb-2 text-slate-800">
                   {blog.title}
                 </h3>

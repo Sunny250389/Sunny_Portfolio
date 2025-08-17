@@ -1,110 +1,59 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom'; // ✅ Import Link for routing
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navItems = [
-    { href: '#about', label: 'About' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#education', label: 'Education' },
-    { href: '#contact', label: 'Contact' },
-  ];
-
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: 'smooth' });
-    setIsMenuOpen(false);
-  };
+  // 🔑 Toggle this to false when deploying, so only you see "Blog Editor"
+  const isOwner = true;
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <div className="text-2xl font-bold text-slate-800">Sunny</div>
+    <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+        {/* Logo / Name */}
+        <Link to="/" className="text-2xl font-bold text-teal-600">
+          Sunny Kumar
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium"
-              >
-                {item.label}
-              </button>
-            ))}
-            {/* Hobbies Tab */}
-            <Link
-              to="/hobbies"
-              className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium"
-            >
-              Hobbies
-            </Link>
-            {/* Blog Tab */}
-            <Link
-              to="/blog"
-              className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium"
-            >
-              Blog
-            </Link>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-slate-600 hover:text-teal-600"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+        {/* Navigation */}
+        <nav className="flex space-x-6 text-slate-700 font-medium">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `hover:text-teal-600 ${isActive ? "text-teal-600 font-bold" : ""}`
+            }
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+            Home
+          </NavLink>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white/95 backdrop-blur-sm border-t border-slate-200">
-            <nav className="flex flex-col space-y-4 py-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium text-left"
-                >
-                  {item.label}
-                </button>
-              ))}
-              {/* Hobbies Link */}
-              <Link
-                to="/hobbies"
-                className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium text-left pl-4"
-              >
-                Hobbies
-              </Link>
-              {/* Blog Link */}
-              <Link
-                to="/blog"
-                className="text-slate-600 hover:text-teal-600 transition-colors duration-200 font-medium text-left pl-4"
-              >
-                Blog
-              </Link>
-            </nav>
-          </div>
-        )}
+          <NavLink
+            to="/hobbies"
+            className={({ isActive }) =>
+              `hover:text-teal-600 ${isActive ? "text-teal-600 font-bold" : ""}`
+            }
+          >
+            Hobbies
+          </NavLink>
+
+          <NavLink
+            to="/blogs"
+            className={({ isActive }) =>
+              `hover:text-teal-600 ${isActive ? "text-teal-600 font-bold" : ""}`
+            }
+          >
+            Blogs
+          </NavLink>
+
+          {/* Only visible for you (owner) */}
+          {isOwner && (
+            <NavLink
+              to="/blog"
+              className={({ isActive }) =>
+                `hover:text-teal-600 ${isActive ? "text-teal-600 font-bold" : ""}`
+              }
+            >
+              Blog Editor
+            </NavLink>
+          )}
+        </nav>
       </div>
     </header>
   );
