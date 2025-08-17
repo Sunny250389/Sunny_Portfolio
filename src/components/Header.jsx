@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   // 🔑 Toggle this to false when deploying, so only you see "Blog Editor"
-  const isOwner = true;
+  const isOwner = false;
 
   return (
     <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
