@@ -14,11 +14,7 @@ function App() {
   const [publishedBlogs, setPublishedBlogs] = useState([]);
 
   useEffect(() => {
-    // 🔥 Clear all old blogs (drafts + published)
-    localStorage.removeItem("published");
-    localStorage.removeItem("drafts");
-
-    // Load fresh published blogs (empty at start)
+    // ✅ Just load published blogs (don't clear localStorage here!)
     const savedPublished = JSON.parse(localStorage.getItem("published")) || [];
     setPublishedBlogs(savedPublished);
   }, []);
