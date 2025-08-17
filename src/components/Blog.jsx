@@ -6,7 +6,7 @@ import "react-quill/dist/quill.snow.css";
 
 const Blog = () => {
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [details, setDetails] = useState("");
   const [image, setImage] = useState(null);
 
   const handleImageUpload = (e) => {
@@ -24,7 +24,7 @@ const Blog = () => {
       return;
     }
     const draftBlogs = JSON.parse(localStorage.getItem("drafts")) || [];
-    draftBlogs.push({ title, content, image });
+    draftBlogs.push({ title, details, image });
     localStorage.setItem("drafts", JSON.stringify(draftBlogs));
     alert("Draft saved!");
   };
@@ -35,11 +35,11 @@ const Blog = () => {
       return;
     }
     const publishedBlogs = JSON.parse(localStorage.getItem("published")) || [];
-    publishedBlogs.push({ title, content, image });
+    publishedBlogs.push({ title, details, image });
     localStorage.setItem("published", JSON.stringify(publishedBlogs));
     alert("Blog published!");
     setTitle("");
-    setContent("");
+    setDetails("");
     setImage(null);
   };
 
@@ -88,29 +88,30 @@ const Blog = () => {
 
       <h2 className="text-4xl font-bold mb-6 text-slate-800">Write a Blog</h2>
 
-      {/* Title Input (Mandatory) */}
+      {/* ✅ Title Section (always bold) */}
       <input
         type="text"
         placeholder="Enter blog title..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-full border p-3 mb-4 text-xl font-semibold"
+        className="w-full border p-3 mb-6 text-3xl font-bold text-slate-800"
         required
       />
 
       {/* Image Upload */}
-      <div className="mb-4">
+      <div className="mb-6">
         <input type="file" accept="image/*" onChange={handleImageUpload} />
         {image && <img src={image} alt="Blog" className="mt-4 max-h-64 rounded" />}
       </div>
 
-      {/* ✅ Rich Text Editor (multi-line + expanding) */}
+      {/* ✅ Blog Details Section (multiline editor) */}
+      <h3 className="text-xl font-semibold mb-2 text-slate-700">Blog Details</h3>
       <ReactQuill
-        value={content}
-        onChange={setContent}
+        value={details}
+        onChange={setDetails}
         modules={modules}
         formats={formats}
-        placeholder="Write your blog content here..."
+        placeholder="Write your detailed blog content here..."
         className="mb-6 bg-white"
       />
 

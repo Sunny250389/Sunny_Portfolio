@@ -13,8 +13,12 @@ import { Link } from 'react-router-dom';
 function App() {
   const [publishedBlogs, setPublishedBlogs] = useState([]);
 
-  // Load published blogs from localStorage
   useEffect(() => {
+    // 🔥 Clear all old blogs (drafts + published)
+    localStorage.removeItem("published");
+    localStorage.removeItem("drafts");
+
+    // Load fresh published blogs (empty at start)
     const savedPublished = JSON.parse(localStorage.getItem("published")) || [];
     setPublishedBlogs(savedPublished);
   }, []);
@@ -31,7 +35,7 @@ function App() {
         <Education />
         <Contact />
 
-        {/* ✅ Published Blogs Section */}
+        {/* ✅ Published Blogs Section (Titles only) */}
         <section id="blogs" className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl font-bold text-slate-800 mb-8">Published Blogs</h2>
@@ -39,34 +43,18 @@ function App() {
             {publishedBlogs.length === 0 ? (
               <p className="text-slate-600">No blogs published yet.</p>
             ) : (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <ul className="space-y-4">
                 {publishedBlogs.map((blog, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition"
-                  >
-                    {blog.image && (
-                      <img
-                        src={blog.image}
-                        alt={blog.title}
-                        className="w-full h-40 object-cover rounded mb-4"
-                      />
-                    )}
-                    <h3 className="text-xl font-semibold text-slate-800 mb-2">
-                      {blog.title}
-                    </h3>
-                    <p className="text-slate-600 text-sm mb-4">
-                      {blog.content.replace(/<[^>]+>/g, '').substring(0, 200)}...
-                    </p>
+                  <li key={index}>
                     <Link
                       to="/blog"
-                      className="text-teal-600 font-medium hover:underline"
+                      className="text-teal-600 text-lg font-medium hover:underline"
                     >
-                      Read More →
+                      {blog.title}
                     </Link>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             )}
           </div>
         </section>
