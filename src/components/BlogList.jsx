@@ -11,7 +11,16 @@ const BlogList = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h2 className="text-3xl font-bold mb-6 text-slate-800">Blogs</h2>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold text-slate-800">Blogs</h2>
+        <Link
+          to="/"
+          className="bg-slate-700 text-white px-4 py-2 rounded hover:bg-slate-900"
+        >
+          Home
+        </Link>
+      </div>
+
       {blogs.length === 0 ? (
         <p className="text-slate-600">No blogs published yet.</p>
       ) : (
@@ -24,9 +33,10 @@ const BlogList = () => {
               >
                 {blog.title}
               </Link>
-              <p className="text-slate-600 mt-2 line-clamp-2">
-                {blog.details}
-              </p>
+              <div
+                className="text-slate-600 mt-2 line-clamp-2"
+                dangerouslySetInnerHTML={{ __html: blog.details }}
+              />
             </div>
           ))}
         </div>

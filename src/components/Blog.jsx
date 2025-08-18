@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { Link } from "react-router-dom";
 
 const Blog = ({ isOwner }) => {
   const [title, setTitle] = useState("");
@@ -53,9 +56,17 @@ const Blog = ({ isOwner }) => {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h2 className="text-4xl font-bold mb-6 text-slate-800">Blog</h2>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-4xl font-bold text-slate-800">Blog</h2>
+        <Link
+          to="/"
+          className="bg-slate-700 text-white px-4 py-2 rounded hover:bg-slate-900"
+        >
+          Home
+        </Link>
+      </div>
 
-      {/* ✅ Only show editor if isOwner = true */}
+      {/* ✅ Editor only for owner */}
       {isOwner && (
         <>
           <input
@@ -65,12 +76,12 @@ const Blog = ({ isOwner }) => {
             onChange={(e) => setTitle(e.target.value)}
             className="w-full p-3 border rounded mb-4 text-lg font-bold"
           />
-          <textarea
+          <ReactQuill
+            theme="snow"
             value={details}
-            onChange={(e) => setDetails(e.target.value)}
-            className="w-full p-3 border rounded mb-4"
-            rows={6}
-            placeholder="Write your blog details..."
+            onChange={setDetails}
+            className="mb-4"
+            placeholder="Write your blog here..."
           />
           <div className="flex gap-4">
             <button
@@ -95,7 +106,7 @@ const Blog = ({ isOwner }) => {
             <div key={blog.id} className="p-4 bg-white rounded shadow">
               <h4 className="text-xl font-bold text-teal-600">{blog.title}</h4>
               <div
-                className="text-slate-600 mt-2"
+                className="text-slate-600 mt-2 line-clamp-2"
                 dangerouslySetInnerHTML={{ __html: blog.details }}
               />
               {isOwner && (
