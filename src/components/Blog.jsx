@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+
 const Blog = ({ isOwner }) => {
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
