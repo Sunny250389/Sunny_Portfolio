@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Bike, Camera, Cricket, Pen, Brush, Cpu } from "lucide-react";
+import { Bike, Camera, Activity, Pen, Brush, Cpu } from "lucide-react";
 
 const Hobbies = () => {
   const hobbies = [
     { icon: <Bike className="w-10 h-10 text-teal-600 animate-bounce" />, name: "Cycling" },
     { icon: <Camera className="w-10 h-10 text-purple-600 animate-pulse" />, name: "Photography" },
-    { icon: <Cricket className="w-10 h-10 text-orange-600 animate-spin-slow" />, name: "Playing Cricket" },
+    { icon: <Activity className="w-10 h-10 text-orange-600 animate-spin-slow" />, name: "Playing Cricket" },
     { icon: <Pen className="w-10 h-10 text-blue-600 animate-pulse" />, name: "Poetry" },
     { icon: <Brush className="w-10 h-10 text-pink-600 animate-bounce" />, name: "Stippling Art" },
     { icon: <Cpu className="w-10 h-10 text-green-600 animate-spin-slow" />, name: "Learning New Technologies" },
