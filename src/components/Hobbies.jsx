@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Bike, Camera, Activity, Pen, Brush, Cpu } from "lucide-react";
+import { Activity, Bike, Brush, Camera, Cpu, Pen, Smartphone } from "lucide-react";
 
 const Hobbies = () => {
   const hobbies = [
@@ -10,6 +10,7 @@ const Hobbies = () => {
     { icon: <Pen className="w-10 h-10 text-blue-600 animate-pulse" />, name: "Poetry" },
     { icon: <Brush className="w-10 h-10 text-pink-600 animate-bounce" />, name: "Stippling Art" },
     { icon: <Cpu className="w-10 h-10 text-green-600 animate-spin-slow" />, name: "Learning New Technologies" },
+    { icon: <Smartphone className="w-10 h-10 text-cyan-600 animate-pulse" />, name: "App Building", path: "/apps" },
   ];
 
   return (
@@ -19,13 +20,20 @@ const Hobbies = () => {
 
         <div className="grid md:grid-cols-3 gap-10">
           {hobbies.map((hobby, index) => (
-            <div
+            <Link
               key={index}
+              to={hobby.path || "#"}
+              aria-disabled={!hobby.path}
+              onClick={(event) => {
+                if (!hobby.path) {
+                  event.preventDefault();
+                }
+              }}
               className="bg-white rounded-2xl shadow-md hover:shadow-xl p-8 flex flex-col items-center justify-center transition-transform transform hover:-translate-y-2"
             >
               <div className="mb-4">{hobby.icon}</div>
               <h3 className="text-xl font-semibold text-slate-700">{hobby.name}</h3>
-            </div>
+            </Link>
           ))}
         </div>
 
