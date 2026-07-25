@@ -5,24 +5,24 @@ import { Link } from "react-router-dom";
 const AppsGallery = () => {
   const apps = [
     {
-      name: "App Placeholder One",
-      description: "A placeholder for one of your built apps. Replace this with the real app summary.",
-      gitUrl: "https://github.com/your-username/app-placeholder-one",
-      appUrl: "https://app-placeholder-one.example.com",
+      name: "One Line Journal",
+      description: "A simple journaling app that allows users to write one line per day, helping them reflect on their thoughts and experiences.",
+      gitUrl: "https://github.com/Sunny250389/One_Line_Journal",
+      appUrl: "https://github.com/Sunny250389/One_Line_Journal",
       icon: <Smartphone className="w-8 h-8" />,
     },
     {
-      name: "App Placeholder Two",
-      description: "A second app slot with room for the GitHub repository and live app link.",
-      gitUrl: "https://github.com/your-username/app-placeholder-two",
-      appUrl: "https://app-placeholder-two.example.com",
+      name: "Mazeduel",
+      description: "A puzzle game where players navigate through mazes to reach the goal.",
+      gitUrl: "https://github.com/Sunny250389/mazeduel",
+      appUrl: "https://mazeduel.vercel.app/",
       icon: <LayoutGrid className="w-8 h-8" />,
     },
     {
-      name: "App Placeholder Three",
-      description: "Use this card for another mobile, web, or automation utility app you have built.",
-      gitUrl: "https://github.com/your-username/app-placeholder-three",
-      appUrl: "https://app-placeholder-three.example.com",
+      name: "Declare Card Game",
+      description: "A card game where players declare their intentions and compete to achieve their goals.",
+      gitUrl: "https://github.com/Sunny250389/declare_card-game",
+      appUrl: "https://declarecard-game.vercel.app/",
       icon: <Smartphone className="w-8 h-8" />,
     },
   ];
