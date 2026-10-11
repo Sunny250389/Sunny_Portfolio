@@ -1,5 +1,6 @@
 import React from 'react';
 import { ExternalLink, Github, Building2, Headphones, FileText, Shield } from 'lucide-react';
+import { Reveal, Stagger, StaggerItem } from './motion';
 
 const Projects = () => {
   const projects = [
@@ -72,21 +73,18 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-800 mb-4">Featured Projects</h2>
           <div className="w-24 h-1 bg-teal-600 mx-auto mb-8"></div>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
             A showcase of my most impactful testing and automation projects, demonstrating expertise 
             in test automation, ML model validation, and comprehensive quality assurance across various domains.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <Stagger className="grid md:grid-cols-2 gap-8 mb-16">
           {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-white border border-slate-200 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
-            >
+            <StaggerItem key={index} whileHover={{ y: -6 }} className="bg-white border border-slate-200 rounded-lg shadow-md hover:shadow-lg duration-300 overflow-hidden transition-shadow">
               <div className="p-8">
                 <div className="flex items-center mb-4">
                   <div className="text-teal-600 mr-4">
@@ -141,11 +139,11 @@ const Projects = () => {
                   <p className="text-slate-600">{project.impact}</p>
                 </div>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
 
-        <div className="bg-slate-50 rounded-lg p-8">
+        <Reveal className="bg-slate-50 rounded-lg p-8">
           <h3 className="text-2xl font-bold text-slate-800 mb-6">Additional Projects & POCs</h3>
           <div className="grid md:grid-cols-2 gap-4">
             {additionalProjects.map((project, index) => (
@@ -155,9 +153,9 @@ const Projects = () => {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <div className="text-center mt-12">
+        <Reveal className="text-center mt-12">
           <p className="text-slate-600 mb-6">
             Interested in learning more about my projects or discussing potential collaborations?
           </p>
@@ -172,7 +170,7 @@ const Projects = () => {
             Get In Touch
             <ExternalLink size={18} />
           </a>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

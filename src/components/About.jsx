@@ -1,5 +1,6 @@
 import React from 'react';
 import { Code, Database, TestTube, Brain } from 'lucide-react';
+import { Reveal, Stagger, StaggerItem } from './motion';
 
 const About = () => {
   const highlights = [
@@ -28,7 +29,7 @@ const About = () => {
   return (
     <section id="about" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-800 mb-4">About Me</h2>
           <div className="w-24 h-1 bg-teal-600 mx-auto mb-8"></div>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
@@ -37,14 +38,11 @@ const About = () => {
             serving as Test Automation Lead at Tata Consultancy Services, leading automation initiatives 
             for Nordea Bank project.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <Stagger className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {highlights.map((item, index) => (
-            <div
-              key={index}
-              className="text-center p-6 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border border-slate-100 hover:border-teal-200"
-            >
+            <StaggerItem key={index} whileHover={{ y: -8 }} className="text-center p-6 rounded-lg hover:shadow-lg duration-300 border border-slate-100 hover:border-teal-200 transition-shadow">
               <div className="text-teal-600 mb-4 flex justify-center">
                 {item.icon}
               </div>
@@ -54,11 +52,11 @@ const About = () => {
               <p className="text-slate-600 leading-relaxed">
                 {item.description}
               </p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
 
-        <div className="mt-16 bg-slate-50 rounded-2xl p-8 md:p-12">
+        <Reveal className="mt-16 bg-slate-50 rounded-2xl p-8 md:p-12">
           <h3 className="text-2xl font-bold text-slate-800 mb-6">My Expertise</h3>
           <p className="text-lg text-slate-600 leading-relaxed mb-6">
             I specialize in creating robust automation frameworks and testing Machine Learning models 
@@ -71,7 +69,7 @@ const About = () => {
             to ensure software quality and reliability. My approach combines technical expertise with 
             a deep understanding of business requirements to deliver comprehensive testing solutions.
           </p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

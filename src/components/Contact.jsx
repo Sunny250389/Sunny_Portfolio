@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react';
+import { Reveal } from './motion';
 
 const Contact = () => {
   const contactInfo = [
@@ -39,17 +40,17 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-800 mb-4">Get In Touch</h2>
           <div className="w-24 h-1 bg-teal-600 mx-auto mb-8" />
           <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
             I'm always interested in discussing new opportunities or collaborating on creative testing and automation projects. Feel free to reach out.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
-          <div>
+          <Reveal>
             <h3 className="text-2xl font-bold text-slate-800 mb-8">Contact Information</h3>
             <div className="space-y-6 mb-8">
               {contactInfo.map((info, index) => (
@@ -82,10 +83,10 @@ const Contact = () => {
                 </a>
               ))}
             </div>
-          </div>
+          </Reveal>
 
           {/* Contact Form using FormSubmit */}
-          <div>
+          <Reveal>
             <h3 className="text-2xl font-bold text-slate-800 mb-8">Send Message</h3>
             <form
               action="https://formsubmit.co/careerforsunny@gmail.com"
@@ -162,7 +163,7 @@ const Contact = () => {
                 Send Message
               </button>
             </form>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

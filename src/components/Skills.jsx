@@ -1,5 +1,6 @@
 import React from 'react';
 import { Code, Database, TestTube, Brain, Wrench, Award } from 'lucide-react';
+import { Reveal, Stagger, StaggerItem, SkillBar, CountUp } from './motion';
 
 const Skills = () => {
   const skillCategories = [
@@ -81,21 +82,18 @@ const Skills = () => {
   return (
     <section id="skills" className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-800 mb-4">Technical Skills & Expertise</h2>
           <div className="w-24 h-1 bg-teal-600 mx-auto mb-8"></div>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Comprehensive technical skills developed through 12 years of hands-on experience in 
             test automation, machine learning model testing, and quality assurance across multiple domains.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300"
-            >
+            <StaggerItem key={index} whileHover={{ y: -4 }} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg duration-300 transition-shadow">
               <div className="flex items-center mb-6">
                 <div className="text-teal-600 mr-3">
                   {category.icon}
@@ -113,23 +111,18 @@ const Skills = () => {
                         {skill.name}
                       </span>
                       <span className="text-slate-500 text-sm">
-                        {skill.level}%
+                        <CountUp to={skill.level} />
                       </span>
                     </div>
-                    <div className="w-full bg-slate-200 rounded-full h-2">
-                      <div
-                        className="bg-teal-600 h-2 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+                    <SkillBar level={skill.level} />
                   </div>
                 ))}
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-8">
+        <Reveal className="grid md:grid-cols-2 gap-8 mb-8">
           <div className="bg-white rounded-lg shadow-md p-8">
             <h3 className="text-2xl font-bold text-slate-800 mb-6 text-center">
               Certifications & Education
@@ -162,9 +155,9 @@ const Skills = () => {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="bg-gradient-to-r from-teal-50 to-blue-50 rounded-lg p-8 text-center">
+        <Reveal className="bg-gradient-to-r from-teal-50 to-blue-50 rounded-lg p-8 text-center">
           <h3 className="text-2xl font-bold text-slate-800 mb-4">
             Specialized Expertise
           </h3>
@@ -174,7 +167,7 @@ const Skills = () => {
             combines traditional software testing with cutting-edge AI/ML validation techniques, making me 
             well-equipped to handle complex testing challenges in modern software development.
           </p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

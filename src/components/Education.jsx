@@ -1,5 +1,6 @@
 import React from 'react';
 import { GraduationCap, Award, Book } from 'lucide-react';
+import { Reveal, Stagger, StaggerItem } from './motion';
 
 const Education = () => {
   const education = [
@@ -58,26 +59,23 @@ const Education = () => {
   return (
     <section id="education" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-800 mb-4">Education & Certifications</h2>
           <div className="w-24 h-1 bg-teal-600 mx-auto mb-8"></div>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Strong educational foundation in Electronics & Communication Engineering complemented by 
             specialized training in Data Science and AI/ML testing methodologies.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-slate-800 mb-8 flex items-center">
             <GraduationCap className="w-8 h-8 text-teal-600 mr-3" />
             Academic Credentials
           </h3>
-          <div className="space-y-8">
+          <Stagger className="space-y-8">
             {education.map((edu, index) => (
-              <div
-                key={index}
-                className="bg-slate-50 rounded-lg p-8 shadow-md hover:shadow-lg transition-all duration-300"
-              >
+              <StaggerItem key={index} whileHover={{ y: -4 }} className="bg-slate-50 rounded-lg p-8 shadow-md hover:shadow-lg duration-300 transition-shadow">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
                   <div>
                     <h4 className="text-2xl font-bold text-slate-800 mb-2">{edu.degree}</h4>
@@ -101,9 +99,9 @@ const Education = () => {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
 
         <div className="mb-16">
@@ -111,21 +109,18 @@ const Education = () => {
             <Award className="w-8 h-8 text-teal-600 mr-3" />
             Professional Certifications
           </h3>
-          <div className="grid md:grid-cols-2 gap-6">
+          <Stagger className="grid md:grid-cols-2 gap-6">
             {certifications.map((cert, index) => (
-              <div
-                key={index}
-                className="bg-slate-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-300"
-              >
+              <StaggerItem key={index} whileHover={{ y: -4 }} className="bg-slate-50 rounded-lg p-6 shadow-md hover:shadow-lg duration-300 transition-shadow">
                 <h4 className="text-xl font-bold text-slate-800 mb-2">{cert.title}</h4>
                 <div className="flex justify-between items-center mb-3">
                   <span className="text-teal-600 font-semibold">{cert.provider}</span>
                   <span className="text-slate-600">{cert.year}</span>
                 </div>
                 <p className="text-slate-600">{cert.description}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
 
         <div className="mb-12">
@@ -133,22 +128,19 @@ const Education = () => {
             <Book className="w-8 h-8 text-teal-600 mr-3" />
             Capstone Projects (PG Diploma Curriculum)
           </h3>
-          <div className="grid md:grid-cols-2 gap-4">
+          <Stagger className="grid md:grid-cols-2 gap-4">
             {capstoneProjects.map((project, index) => (
-              <div
-                key={index}
-                className="bg-slate-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-300"
-              >
+              <StaggerItem key={index} whileHover={{ y: -4 }} className="bg-slate-50 rounded-lg p-6 shadow-md hover:shadow-lg duration-300 transition-shadow">
                 <div className="flex items-start">
                   <span className="w-2 h-2 bg-teal-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                   <span className="text-slate-700 font-medium">{project}</span>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
 
-        <div className="bg-gradient-to-r from-teal-50 to-blue-50 rounded-lg p-8 text-center">
+        <Reveal className="bg-gradient-to-r from-teal-50 to-blue-50 rounded-lg p-8 text-center">
           <h3 className="text-2xl font-bold text-slate-800 mb-4">
             Continuous Learning & Training
           </h3>
@@ -161,7 +153,7 @@ const Education = () => {
             My commitment to professional development ensures I remain at the forefront of testing
             technologies and best practices in the rapidly evolving field of software quality assurance.
           </p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

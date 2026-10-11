@@ -1,5 +1,6 @@
 import React from 'react';
 import { Heart } from 'lucide-react';
+import { Reveal } from './motion';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -7,7 +8,7 @@ const Footer = () => {
   return (
     <footer className="bg-slate-800 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <Reveal className="grid md:grid-cols-3 gap-8 mb-8">
           {/* About Section */}
           <div>
             <h3 className="text-2xl font-bold mb-4">Sunny Kumar</h3>
@@ -51,7 +52,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         <div className="border-t border-slate-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">

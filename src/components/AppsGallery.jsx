@@ -1,6 +1,8 @@
 import React from "react";
 import { ExternalLink, Github, Home, LayoutGrid, Smartphone } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Reveal, Stagger, fadeUp } from "./motion";
 
 const AppsGallery = () => {
   const apps = [
@@ -30,7 +32,7 @@ const AppsGallery = () => {
   return (
     <div className="min-h-screen bg-slate-50 py-16">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between mb-12">
+        <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between mb-12">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-teal-600 mb-2">
               App Building
@@ -54,13 +56,15 @@ const AppsGallery = () => {
               Home
             </Link>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <Stagger className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {apps.map((app) => (
-            <article
+            <motion.article
               key={app.name}
-              className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-6 shadow-md transition hover:-translate-y-1 hover:shadow-lg"
+              variants={fadeUp}
+              whileHover={{ y: -6 }}
+              className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-6 shadow-md transition-shadow hover:shadow-lg"
             >
               <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-teal-100 text-teal-700">
                 {app.icon}
@@ -89,9 +93,9 @@ const AppsGallery = () => {
                   App Link
                 </a>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </Stagger>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Calendar, MapPin, ChevronRight } from 'lucide-react';
+import { Reveal, Stagger, StaggerItem } from './motion';
 
 const Experience = () => {
   const experiences = [
@@ -73,21 +74,18 @@ const Experience = () => {
   return (
     <section id="experience" className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-800 mb-4">Professional Experience</h2>
           <div className="w-24 h-1 bg-teal-600 mx-auto mb-8"></div>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
             12 years of comprehensive testing experience across various domains including healthcare, 
             finance, telecom, and audio analytics with expertise in both traditional and ML-based testing approaches.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="space-y-8">
+        <Stagger className="space-y-8">
           {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
-            >
+            <StaggerItem key={index} whileHover={{ y: -4 }} className="bg-white rounded-lg shadow-md hover:shadow-lg duration-300 overflow-hidden transition-shadow">
               <div className="p-8">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                   <div>
@@ -128,9 +126,9 @@ const Experience = () => {
                   </ul>
                 </div>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );
